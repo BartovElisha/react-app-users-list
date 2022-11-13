@@ -2,14 +2,16 @@ interface Props {
     id: number,
     fullName: string,
     status: string,
-    email: string
+    email: string,
+    statusColor: string
 }
 
 function TableRow({
     id,
     fullName,
     status,
-    email}: Props) {
+    email,
+    statusColor}: Props) {
 
     function handleClick(status: string) {
         alert(`User status is ${status}`);
@@ -20,7 +22,7 @@ function TableRow({
             <th scope="row">{id}</th>
             <td>{fullName}</td>
             <td>
-                <span onClick={() => handleClick(status)} className="badge text-bg-success">{status}</span>
+                <span onClick={() => handleClick(status)} className={statusColor}>{status}</span>
             </td>
             <td>{email}</td>
         </tr>

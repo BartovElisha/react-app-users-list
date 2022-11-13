@@ -1,6 +1,5 @@
 import TableRow from "./TableRow";
 
-
 function Table() {
 
     const users = [
@@ -33,8 +32,23 @@ function Table() {
             fullName: "Tomer Babamuratov",
             status: "Banded",
             email: "tomer.b@gmail.com"
+        },
+        {
+            id: 6,
+            fullName: "Ruven Babamuratov",
+            status: "Active",
+            email: "ruven.b@gmail.com"
         }
     ];
+
+    function getStatusColor(status: string) {
+        switch (status) {
+            case "Active": return "badge text-bg-success";
+            case "Expired": return "badge text-bg-warning";
+            case "Banded": return "badge text-bg-danger";
+            default : return "badge text-bg-danger";
+        }
+    }
 
     return ( 
         <div className="container mt-5">
@@ -52,7 +66,8 @@ function Table() {
                         users.map((row) => 
                             <TableRow
                                 key={row.id}
-                                {...row} 
+                                {...row}
+                                statusColor={getStatusColor(row.status)}
                             />
                         )
                     }
