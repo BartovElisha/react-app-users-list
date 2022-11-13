@@ -3,7 +3,7 @@ import TableRow from "./TableRow";
 
 function Table() {
 
-    const data = [
+    const users = [
         {
             id: 1,
             fullName: "Elisha Bartov",
@@ -49,7 +49,7 @@ function Table() {
                 </thead> 
                 <tbody>
                     {
-                        data.map((row) => 
+                        users.map((row) => 
                             <TableRow
                                 key={row.id}
                                 {...row} 
