@@ -41,15 +41,6 @@ function Table() {
         }
     ];
 
-    function getStatusColor(status: string) {
-        switch (status) {
-            case "Active": return "badge text-bg-success";
-            case "Expired": return "badge text-bg-warning";
-            case "Banded": return "badge text-bg-danger";
-            default : return "badge text-bg-danger";
-        }
-    }
-
     return ( 
         <div className="container mt-5">
             <table className="table table-striped w-85">
@@ -67,7 +58,6 @@ function Table() {
                             <TableRow
                                 key={row.id}
                                 {...row}
-                                statusColor={getStatusColor(row.status)}
                             />
                         )
                     }

@@ -2,7 +2,6 @@ interface Props {
     id: number,
     fullName: string,
     status: string,
-    statusColor: string,
     email: string,
 }
 
@@ -10,8 +9,16 @@ function TableRow({
     id,
     fullName,
     status,
-    statusColor,
     email}: Props) {
+
+    function getStatusColor(status: string) {
+        switch (status) {
+            case "Active": return "badge text-bg-success";
+            case "Expired": return "badge text-bg-warning";
+            case "Banded": return "badge text-bg-danger";
+            default : return "badge text-bg-danger";
+        }
+    }        
 
     function handleClick(status: string) {
         alert(`User status is ${status}`);
@@ -22,7 +29,9 @@ function TableRow({
             <th scope="row">{id}</th>
             <td>{fullName}</td>
             <td>
-                <span onClick={() => handleClick(status)} className={statusColor}>{status}</span>
+                <span onClick={() => handleClick(status)} className={getStatusColor(status)}>
+                    {status}
+                </span>
             </td>
             <td>{email}</td>
         </tr>
