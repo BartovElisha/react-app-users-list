@@ -2,16 +2,16 @@ interface Props {
     id: number,
     fullName: string,
     status: string,
+    statusColor: string,
     email: string,
-    statusColor: string
 }
 
 function TableRow({
     id,
     fullName,
     status,
-    email,
-    statusColor}: Props) {
+    statusColor,
+    email}: Props) {
 
     function handleClick(status: string) {
         alert(`User status is ${status}`);
