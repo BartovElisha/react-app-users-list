@@ -1,7 +1,9 @@
+import { Statuses } from "../types/Types";
+
 interface Props {
     id: number,
     fullName: string,
-    status: string,
+    status: Statuses,
     email: string,
 }
 
@@ -13,14 +15,14 @@ function TableRow({
 
     function getStatusColor(status: string) {
         switch (status) {
-            case "Active": return "badge text-bg-success";
-            case "Expired": return "badge text-bg-warning";
-            case "Banded": return "badge text-bg-danger";
+            case Statuses.active: return "badge text-bg-success";
+            case Statuses.expired: return "badge text-bg-warning";
+            case Statuses.banded: return "badge text-bg-danger";
             default : return "badge text-bg-danger";
         }
     }        
 
-    function handleClick(status: string) {
+    function handleClick(status: Statuses) {
         alert(`User status is ${status}`);
     }
         
@@ -29,11 +31,18 @@ function TableRow({
             <th scope="row">{id}</th>
             <td>{fullName}</td>
             <td>
-                <span onClick={() => handleClick(status)} className={getStatusColor(status)}>
-                    {status}
-                </span>
+                <button className="btn">
+                    <span onClick={() => handleClick(status)} className={getStatusColor(status)}>
+                        {status}
+                    </span>
+                </button>
             </td>
             <td>{email}</td>
+            <td>
+                <button className="btn">
+                    <i className="bi-trash me-2"></i>
+                </button>
+            </td>
         </tr>
     );
 }
