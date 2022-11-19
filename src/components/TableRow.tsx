@@ -15,6 +15,7 @@ function TableRow({
 
     function getStatusColor(status: string) {
         switch (status) {
+            case Statuses.new: return "badge text-bg-primary";
             case Statuses.active: return "badge text-bg-success";
             case Statuses.expired: return "badge text-bg-warning";
             case Statuses.banded: return "badge text-bg-danger";

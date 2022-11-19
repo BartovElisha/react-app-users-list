@@ -39,6 +39,12 @@ function Table() {
             fullName: "Ruven Babamuratov",
             status: Statuses.active,
             email: "ruven.b@gmail.com"
+        },
+        {
+            id: 7,
+            fullName: "Leonid Yabel",
+            status: Statuses.new,
+            email: "leonid.y@gmail.com"
         }
     ];
 
