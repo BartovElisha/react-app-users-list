@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { User } from "../models/Models";
 import { Statuses } from "../types/Types";
 
 interface Props {
@@ -15,17 +14,40 @@ function MenuBar({updateUsers}: Props) {
     const [email, setEmail] = useState('');
     const [status,setStatus] = useState(Statuses.empty);
 
-    function handleButtonClick() {
-        // 1. Get...
-        const user: User = {
-            id: new Date().getMilliseconds(),
-            fullName: fullName,
-            email: email,
-            status: status
-        }     
-        // 2. Update users Array by setUsers state function
-        updateUsers(user);
+
+    function clearInputFields() {
+        setFullName('');
+        setEmail('');
+        setStatus(Statuses.empty);
     }
+
+    // Short version of handleButtonClick()
+    function handleButtonClick() {
+        // 1. Update users Array by setUsers state function
+        updateUsers({
+            id: new Date().getTime(),
+            fullName,
+            email,
+            status
+        });
+        // 2. clear Input Fields
+        clearInputFields();
+    }
+    // Long version of handleButtonClick()
+    // function handleButtonClick() {
+    //     // 1. Get...
+    //     const user: User = {
+    //         id: new Date().getTime(),
+    //         fullName: fullName,
+    //         email: email,
+    //         status: status
+    //     }     
+    //     // 2. Update users Array by setUsers state function
+    //     updateUsers(user)
+
+    //     // 3. clear Input Fields
+    //     clearInputFields(); 
+    // }
 
     return (  
         <div className="container d-flex p-4 justify-content-between">

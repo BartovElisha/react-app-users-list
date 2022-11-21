@@ -3,9 +3,12 @@ import TableRow from "./TableRow";
 
 interface Props {
     users: User[];
+    deleteUser: Function;
 }
 
-function Table({users}:Props) {
+function Table({
+    users,
+    deleteUser}:Props) {
     return ( 
         <div className="container mt-5">
             <table className="table table-striped w-85">
@@ -24,6 +27,7 @@ function Table({users}:Props) {
                             <TableRow
                                 key={row.id}
                                 {...row}
+                                deleteUser={deleteUser}
                             />
                         )
                     }

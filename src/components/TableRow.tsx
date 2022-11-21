@@ -5,13 +5,15 @@ interface Props {
     fullName: string,
     status: Statuses,
     email: string,
+    deleteUser: Function
 }
 
 function TableRow({
     id,
     fullName,
     status,
-    email}: Props) {
+    email,
+    deleteUser}: Props) {
 
     function getStatusColor(status: string) {
         switch (status) {
@@ -40,7 +42,9 @@ function TableRow({
             </td>
             <td>{email}</td>
             <td>
-                <button className="btn">
+                <button
+                    onClick={() => deleteUser(id)} 
+                    className="btn">
                     <i className="bi-trash me-2"></i>
                 </button>
             </td>

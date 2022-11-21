@@ -10,8 +10,14 @@ function Home() {
     const [users,setUsers] = useState<Array<User>>([]);
 
     function updateUsers(user: User) {
-        users.push(user);
-        setUsers(users);
+        // users.push(user);
+        const updated = [...users, user];
+        setUsers(updated);
+    }
+
+    function deleteUser(userId: number) {
+        const updated = users.filter(user => user.id !== userId);
+        setUsers(updated);
     }
 
     return (
@@ -26,7 +32,9 @@ function Home() {
                 users.length === 0 ? (
                     <p className="text-center mt-4"><strong>No Users In Database</strong></p>
                 ):(
-                    <Table users={users}/>
+                    <Table 
+                        users={users}
+                        deleteUser={deleteUser}/>
                 )
             }            
             <Footer />
