@@ -1,3 +1,4 @@
+import Joi from "joi";
 import { useState } from "react";
 import { Statuses } from "../types/Types";
 
@@ -23,6 +24,18 @@ function MenuBar({updateUsers}: Props) {
 
     // Short version of handleButtonClick()
     function handleButtonClick() {
+        // const schema = Joi.object({
+        //     fullName: Joi.string().required().min(2),
+        //     email: Joi.string().email().required()
+        // });
+
+        // 0. Data Validation
+        if (!fullName || fullName.length === 0)
+            return;
+
+        if (!email || email.length === 0)
+            return;
+
         // 1. Update users Array by setUsers state function
         updateUsers({
             id: new Date().getTime(),
