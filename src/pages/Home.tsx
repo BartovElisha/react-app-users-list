@@ -29,18 +29,21 @@ function Home() {
             <MenuBar 
                 updateUsers={updateUsers} />
             <Title content="Users List" />
-            <Message // NOT WORK NEED UNDERSTAND WHY !!!!!!!!!!!!!
-                type="success"
-                showMode={!!newUser}
-                >
-                New user:
-                <span className="text-bold">
-                    {newUser?.fullName}
-                </span>
-                has been added
-            </Message>            
             {
-                users.length === 0 && 
+                users.length !== 0 && 
+                <Message 
+                    type="success"
+                    showMode={!!newUser}
+                    >
+                    New user:
+                    <span className="text-bold">
+                        {newUser?.fullName}
+                    </span>
+                    has been added
+                </Message>                 
+            }        
+            {
+               users.length === 0 && 
                 <Message
                     type="warning"
                 >
