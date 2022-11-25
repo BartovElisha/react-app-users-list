@@ -43,7 +43,7 @@ function TableRow({
             <td>{email}</td>
             <td>
                 <button
-                    onClick={() => deleteUser(id)} 
+                    onClick={() => deleteUser({id,fullName,status,email})} 
                     className="btn">
                     <i className="bi-trash me-2"></i>
                 </button>

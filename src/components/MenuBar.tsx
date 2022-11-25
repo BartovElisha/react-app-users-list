@@ -3,12 +3,12 @@ import { useState } from "react";
 import { Statuses } from "../types/Types";
 
 interface Props {
-    updateUsers: Function;
+    addUser: Function;
 }
 
 const statuses = Object.values(Statuses);
 
-function MenuBar({updateUsers}: Props) {
+function MenuBar({addUser}: Props) {
 
     // Menu States        
     const [fullName, setFullName] = useState('');
@@ -41,7 +41,7 @@ function MenuBar({updateUsers}: Props) {
         setError('');
 
         // 1. Update users Array by setUsers state function
-        updateUsers({
+        addUser({
             id: new Date().getTime(),
             fullName,
             email,

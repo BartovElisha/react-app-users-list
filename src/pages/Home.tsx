@@ -10,26 +10,42 @@ function Home() {
     // App States
     const [users,setUsers] = useState<Array<User>>([]);
     const [newUser,setNewUser] = useState<User>();
+    const [deletedUser,setdeletedUser] = useState<User>();
 
-    function updateUsers(userToAdd: User) {
+    function addUser(userToAdd: User) {
         const updated = [...users, userToAdd];
         // Must update users only by setUsers function, not Direct
         setUsers(updated);
         setNewUser(userToAdd);
     }
 
-    function deleteUser(userId: number) {
-        const updated = users.filter(user => user.id !== userId);
+    function deleteUser(userToDelete: User) {
+        const updated = users.filter(user => user.id !== userToDelete.id);
         setUsers(updated);
+        setdeletedUser(userToDelete);
     }
 
     return (
         <>
             <Title content="Add User" />
             <MenuBar 
-                updateUsers={updateUsers} />
+                addUser={addUser} />
             <Title content="Users List" />
             {
+                deletedUser &&
+                <Message 
+                    type="success"
+                    showMode={!!newUser}
+                    >
+                    User:
+                    <span className="text-bold">
+                        {deletedUser?.fullName}
+                    </span>
+                    has been deleted !!!
+                </Message>                 
+            }
+            {
+                // newUser && 
                 users.length !== 0 && 
                 <Message 
                     type="success"
@@ -39,7 +55,7 @@ function Home() {
                     <span className="text-bold">
                         {newUser?.fullName}
                     </span>
-                    has been added
+                    has been added !!!
                 </Message>                 
             }        
             {
