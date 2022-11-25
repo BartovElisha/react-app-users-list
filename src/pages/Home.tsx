@@ -35,6 +35,7 @@ function Home() {
                 deletedUser &&
                 <Message 
                     type="success"
+                    showMode={!!deletedUser}
                     >
                     User:
                     <span className="text-bold">

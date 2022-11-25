@@ -14,7 +14,7 @@ function Table({
             <table className="table table-striped w-85">
                 <thead>
                     <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">Id</th>
                     <th scope="col">Full Name</th>
                     <th scope="col">Status</th>
                     <th scope="col">Email</th>
