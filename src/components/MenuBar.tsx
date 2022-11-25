@@ -13,6 +13,7 @@ function MenuBar({updateUsers}: Props) {
     // Menu States        
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
+    const [error, setError] = useState('');
     const [status,setStatus] = useState(Statuses.empty);
 
 
@@ -24,17 +25,20 @@ function MenuBar({updateUsers}: Props) {
 
     // Short version of handleButtonClick()
     function handleButtonClick() {
-        // const schema = Joi.object({
-        //     fullName: Joi.string().required().min(2),
-        //     email: Joi.string().email().required()
-        // });
-
         // 0. Data Validation
-        if (!fullName || fullName.length === 0)
-            return;
+        const schema = Joi.object({
+            fullName: Joi.string().required().min(2),
+            email: Joi.string().required().email({ tlds: { allow: false}})
+        });
 
-        if (!email || email.length === 0)
+        const { error } = schema.validate({ fullName, email });
+
+        if (error) {
+            setError(error.message);
             return;
+        }
+        // No Validation Errors
+        setError('');
 
         // 1. Update users Array by setUsers state function
         updateUsers({
@@ -65,6 +69,13 @@ function MenuBar({updateUsers}: Props) {
     return (  
         <div className="container d-flex p-4 justify-content-between">
             <h4>User:</h4>
+            {
+                // Add Error message after validation
+                error && 
+                <div className="text-danger">
+                    {error}                        
+                </div>
+            }   
             <div className="d-flex">
                 <input
                     value={fullName}    
@@ -98,7 +109,7 @@ function MenuBar({updateUsers}: Props) {
                     onClick={handleButtonClick}
                     type="button" 
                     className="btn btn-info">Add</button>
-            </div>            
+            </div>  
         </div>
     );
 }

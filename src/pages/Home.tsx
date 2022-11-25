@@ -43,7 +43,7 @@ function Home() {
                 </Message>                 
             }        
             {
-               users.length === 0 && 
+                users.length === 0 && 
                 <Message
                     type="warning"
                 >
