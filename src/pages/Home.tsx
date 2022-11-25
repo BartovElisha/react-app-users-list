@@ -35,7 +35,6 @@ function Home() {
                 deletedUser &&
                 <Message 
                     type="success"
-                    showMode={!!newUser}
                     >
                     User:
                     <span className="text-bold">
@@ -45,11 +44,9 @@ function Home() {
                 </Message>                 
             }
             {
-                // newUser && 
-                users.length !== 0 && 
+                newUser &&
                 <Message 
                     type="success"
-                    showMode={!!newUser}
                     >
                     New user:
                     <span className="text-bold">
