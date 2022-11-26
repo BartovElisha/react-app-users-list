@@ -32,38 +32,33 @@ function Home() {
                 addUser={addUser} />
             <Title content="Users List" />
             {
-                deletedUser &&
-                <Message 
-                    type="success"
-                    showMode={!!deletedUser}
-                    >
-                    User:
-                    <span className="text-bold">
-                        {deletedUser?.fullName}
-                    </span>
-                    has been deleted !!!
-                </Message>                 
-            }
-            {
-                newUser &&
-                <Message 
-                    type="success"
-                    >
-                    New user:
-                    <span className="text-bold">
-                        {newUser?.fullName}
-                    </span>
-                    has been added !!!
-                </Message>                 
-            }        
-            {
-                users.length === 0 && 
+                users.length === 0 &&
                 <Message
                     type="warning"
+                    showButton={false}
                 >
-                    <span className="text-bold">No Users To Show</span>
+                    <span className="fw-bold">No Users To Show</span>
                 </Message>
-            }
+            }            
+            <Message 
+                type="danger"
+                user={deletedUser}
+                showButton={true}>
+                User:
+                <span className="fw-bold">
+                    {deletedUser?.fullName}
+                </span>
+                has been deleted !!!
+            </Message>                 
+            <Message 
+                type="success"
+                user={newUser}
+                showButton={true}>
+                New user:
+                <span className="fw-bold">
+                    {newUser?.fullName}
+                </span>has been added !!!
+            </Message>                    
             {
                 users.length !== 0 &&
                 <Table 

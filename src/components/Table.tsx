@@ -33,7 +33,7 @@ function Table({
                     }
                 </tbody>
             </table>
-        </div>        
+        </div> 
     );
 }
 
